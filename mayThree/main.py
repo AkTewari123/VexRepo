@@ -7,6 +7,6 @@ Date: 5/3/24
 
 counter = 0
 
-while counter < 10:
+while counter < 15:
     print(f"Time: {counter}")
-    counter += 4
+    counter += 1
