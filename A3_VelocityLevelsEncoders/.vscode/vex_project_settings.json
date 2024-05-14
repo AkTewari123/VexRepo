@@ -1,0 +1,18 @@
+{
+	"extension": {
+		"version": "0.5.0",
+		"json": 2
+	},
+	"project": {
+		"name": "A3_VelocityLevelsEncoders",
+		"description": "Develop code for the robot to automatically straighten its path while in motion",
+		"creationDate": "5/14/2024, 10:10:24 AM",
+		"platform": "V5",
+		"language": "python",
+		"slot": 1,
+		"sdkVersion": "V5_1_0_1_19",
+		"python": {
+			"main": "src/main.py"
+		}
+	}
+}
