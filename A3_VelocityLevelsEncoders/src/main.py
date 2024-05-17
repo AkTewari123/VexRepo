@@ -68,8 +68,8 @@ def driveStraightFoward(
     rightEncoder.set_position(0, DEGREES)
 
     #   Normal and slow velocities (tuned for specific robot)
-    normal = 50  # Run at normal percent of max speed
-    slow = 43  # Run at slow percent of max speed
+    normal = 60  # Run at normal percent of max speed
+    slow = 50  # Run at slow percent of max speed
 
     while rightEncoder.position(DEGREES) < count:
         encoderValues()
@@ -98,8 +98,8 @@ def driveStraightReverse(
     rightEncoder.set_position(0, DEGREES)
 
     #   Normal and slow velocities (tuned for specific robot)
-    normal = -50  # Run at normal percent of max speed
-    slow = -43  # Run at slow percent of max speed
+    normal = -60  # Run at normal percent of max speed
+    slow = -50  # Run at slow percent of max speed
 
     while rightEncoder.position(DEGREES) > count:
         encoderValues()
@@ -118,8 +118,8 @@ def driveStraightReverse(
 
 def main():
     bump() # Call bump and wait for a button press
-    driveStraightFoward(120, 0) # Drive the robot straight forward
-    wait(5, SECONDS)
-    driveStraightReverse(120, 0) # Drive the robot straight forward
-
+    driveStraightFoward(120, 7.5) # Drive the robot straight forward
+    wait(3, SECONDS)
+    driveStraightReverse(120, 7.5) # Drive the robot straight forward
 main()
+
