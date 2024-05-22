@@ -3,7 +3,7 @@
 # 	Module:       main.py                                                      #
 # 	Author:       Akshat Tewari and Andy Teng                                              #
 # 	Created:      5/17/2024, 10:10:24 AM                                       #
-# 	Description:  A3_VelocityLevelEncoders                                                  #
+# 	Description:  A4_VelocityLevelEncoders                                                  #
 #                                                                              #
 # ---------------------------------------------------------------------------- #
 
@@ -62,7 +62,7 @@ def swingLeft(turnCount) :
     # turnCount = encoder count for turn
     # Reset the right encoder to 0.
     while (rightEncoder.position(DEGREES) < turnCount): # Check turn status based on right encoder count
-        spinMotors (50, 0)
+        spinMotors (40, 0)
         # Spin right motor forward (left = off)
     stopMotors()       # Stop the motors
     
@@ -84,7 +84,7 @@ def pointLeft(turnCount):
     ## turnCount = encoder count for turn
     # Reset the right encoder to 0.
     while(rightEncoder.position (DEGREES) < turnCount): # Check turn status based on right encoder count
-        spinMotors (50, -50) # Spin right motor forward and left reverse
+        spinMotors (60, -60) # Spin right motor forward and left reverse
     stopMotors ()
     # Stop the motors
 # Right Point Turn
@@ -99,7 +99,7 @@ def pointRight(turnCount) :
 
 def main() :
     bump()  # Wait for bump switch to be pressed to start motors
-    swingLeft(1800) # 90-degree swing turn (count value specific to robot)
+    pointLeft(155) # 90-degree swing turn (count value specific to robot)
     #Count for 90 deg. Left turn may not be equal count for 90-deg. right turn
 
     #pointLeft(320) # 90-degree point turn (count value specific to robot)
