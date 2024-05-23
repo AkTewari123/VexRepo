@@ -1,0 +1,18 @@
+{
+	"extension": {
+		"version": "0.5.0",
+		"json": 2
+	},
+	"project": {
+		"name": "V5PotentiometerPOE",
+		"description": "Potentiometer Lab POE 2023-24",
+		"creationDate": "5/23/2024, 9:41:28 AM",
+		"platform": "V5",
+		"language": "python",
+		"slot": 1,
+		"sdkVersion": "V5_1_0_1_19",
+		"python": {
+			"main": "src/main.py"
+		}
+	}
+}

@@ -1,0 +1,18 @@
+{
+	"extension": {
+		"version": "0.5.0",
+		"json": 2
+	},
+	"project": {
+		"name": "V6POECourseAssessment",
+		"description": "Performs 4 turns along an obstacle course. Goes in a square path with each side being 4 inches.",
+		"creationDate": "5/23/2024, 10:36:27 AM",
+		"platform": "V5",
+		"language": "python",
+		"slot": 1,
+		"sdkVersion": "V5_1_0_1_19",
+		"python": {
+			"main": "src/main.py"
+		}
+	}
+}

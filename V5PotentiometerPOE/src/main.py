@@ -42,6 +42,7 @@ def spinMotors(rightMotorVelocity, leftMotorVelocity):
 def stopMotors():  # Stop both motors
     rightMotor.stop()
     leftMotor.stop()
+    wait(1, SECONDS)
 
 
 # Print out the encoder values on the screen
@@ -57,75 +58,89 @@ def encoderValues():
 
 
 # Left Swing Turn
-def swingLeft(turnCount) :
-    rightEncoder.set_position (0, DEGREES)
+def swingLeft(turnCount):
+    rightEncoder.set_position(0, DEGREES)
     # turnCount = encoder count for turn
     # Reset the right encoder to 0.
-    while (rightEncoder.position(DEGREES) < turnCount): # Check turn status based on right encoder count
-        spinMotors (40, 0)
+    while (
+        rightEncoder.position(DEGREES) < turnCount
+    ):  # Check turn status based on right encoder count
+        spinMotors(40, 0)
         # Spin right motor forward (left = off)
-    stopMotors()       # Stop the motors
-    
-    
+    stopMotors()  # Stop the motors
+
+
 # Right Swing Turn
-def swingRight(turnCount) :
+def swingRight(turnCount):
     leftEncoder.set_position(0, DEGREES)
     # turnCount = encoder count for turn
     # Reset the left encoder to 0.
-    while(leftEncoder.position(DEGREES) < turnCount) : # Check turn status based on left encoder count
-        spinMotors (0, 50) # Spin left motor forward (right = off)
-        
-    stopMotors ( )
+    while (
+        leftEncoder.position(DEGREES) < turnCount
+    ):  # Check turn status based on left encoder count
+        spinMotors(0, 50)  # Spin left motor forward (right = off)
+
+    stopMotors()
     # Stop the motors
+
 
 # Left Point Turn
 def pointLeft(turnCount):
-    rightEncoder.set_position (0, DEGREES)
+    rightEncoder.set_position(0, DEGREES)
     ## turnCount = encoder count for turn
     # Reset the right encoder to 0.
-    while(rightEncoder.position (DEGREES) < turnCount): # Check turn status based on right encoder count
-        spinMotors (60, -60) # Spin right motor forward and left reverse
-    stopMotors ()
+    while (
+        rightEncoder.position(DEGREES) < turnCount
+    ):  # Check turn status based on right encoder count
+        spinMotors(60, -60)  # Spin right motor forward and left reverse
+    stopMotors()
     # Stop the motors
+
+
 # Right Point Turn
-def pointRight(turnCount) :
-    leftEncoder.set_position (0, DEGREES)
+def pointRight(turnCount):
+    leftEncoder.set_position(0, DEGREES)
     ## turnCount = encoder count for turn
     # Reset the left encoder to 0.
-    while(leftEncoder.position(DEGREES) < turnCount):
-        spinMotors (-50, 50)   # Check turn status based on left encoder count
+    while leftEncoder.position(DEGREES) < turnCount:
+        spinMotors(-50, 50)  # Check turn status based on left encoder count
     # Spin left motor forward and right reverse
-    stopMotors ( )   # Stop the motors
+    stopMotors()  # Stop the motors
 
-def main() :
-    bump()  # Wait for bump switch to be pressed to start motors
-    pointLeft(155) # 90-degree swing turn (count value specific to robot)
-    #Count for 90 deg. Left turn may not be equal count for 90-deg. right turn
 
-    #pointLeft(320) # 90-degree point turn (count value specific to robot)
-    #Count for 90 deg. Left turn may not be equal count for 90-deg. right turn
 def liftArm(velocity, liftDisp):
     # vel = motor velocity, mDisp = angular displacement of motor sha
     # liftDisp = angular displacement for lift
     # Set motor power level
-    liftMotor. set_velocity(velocity, PERCENT)
+    liftMotor.set_velocity(velocity, PERCENT)
     # Configure the motor to hold its position once the lift arm rotation is complete.
-    liftMotor. set_stopping (HOLD)
+    liftMotor.set_stopping(HOLD)
     GR = 5
     motorDisp = liftDisp * GR
     # Input gear = 12T, output gear = 60T for lift arm
     # Corresponding angular disp. of motor shaft with a GR = 5
     # Print starting potentiometer position (degrees)
-    initPos = pot1. angle (DEGREES)
-    brain. screen. set_cursor (1,1)
-    brain. screen.print("Pot. Angle: " + str(initPos))
+    initPos = pot1.angle(DEGREES)   
+    brain.screen.set_cursor(1, 1)
+    brain.screen.print("Pot. Angle: " + str(initPos))
     # Rotate the lift arm
-    liftMotor. spin_for (FORWARD, motorDisp, DEGREES)
+    liftMotor.spin_for(FORWARD, motorDisp, DEGREES)
     # Print final potentiometer position (degrees)
-    finalPos = pot1. angle (DEGREES)
-    brain. screen.set_cursor (2,1)
-    brain.screen.print("Pot. Angle: " + str(finalPos) )
+    finalPos = pot1.angle(DEGREES)
+    brain.screen.set_cursor(2, 1)
+    brain.screen.print("Pot. Angle: " + str(finalPos))
     # Print liftarm's angular displacement
-    brain. screen.set_cursor (3,1)
+    brain.screen.set_cursor(3, 1)
     brain.screen.print("Anglular Displacement:" + str(abs(finalPos - initPos)))
+
+
+def main():
+    liftVel = 20
+    bump()
+    liftArm(liftVel, 55)
+
+
 main()
+# Lift motor velocity in percent
+# parami = velocity level
+# param2 = desired angular displacement of lift in degrees (+ raise, - lower
